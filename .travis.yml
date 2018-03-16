@@ -1,65 +1,42 @@
 sudo: false
 dist: trusty
-
 language: php
-
 notifications:
   email:
     on_success: never
     on_failure: change
-
 branches:
   only:
-    - master
-
+  - master
+  - "/^v?[0-9\\.]+/"
 cache:
   directories:
-    - $HOME/.composer/cache
-
+  - "$HOME/.composer/cache"
 matrix:
   include:
-    - php: 7.1
-      env: WP_VERSION=latest
-    - php: 7.0
-      env: WP_VERSION=latest
-    - php: 5.6
-      env: WP_VERSION=4.4
-    - php: 5.6
-      env: WP_VERSION=latest
-    - php: 5.6
-      env: WP_VERSION=trunk
-    - php: 5.6
-      env: WP_TRAVISCI=phpcs
-    - php: 5.3
-      env: WP_VERSION=latest
-      dist: precise
-
+  - php: 7.2
+    env: WP_VERSION=trunk
+  - php: 7.0
+    env: WP_VERSION=trunk
+  - php: 7.2
+    env: WP_VERSION=latest
+  - php: 7.0
+    env: WP_VERSION=latest
 before_script:
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
-  - |
-    if [ -f ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini ]; then
-      phpenv config-rm xdebug.ini
-    else
-      echo "xdebug.ini does not exist"
-    fi
-  - |
-    if [[ ! -z "$WP_VERSION" ]] ; then
-      bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
-      composer global require "phpunit/phpunit=4.8.*|5.7.*"
-    fi
-  - |
-    if [[ "$WP_TRAVISCI" == "phpcs" ]] ; then
-      composer global require wp-coding-standards/wpcs
-      phpcs --config-set installed_paths $HOME/.composer/vendor/wp-coding-standards/wpcs
-    fi
-
+  - composer install
+  - bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
+  - composer global require "phpunit/phpunit=4.8.*|5.7.*"
 script:
-  - |
-    if [[ ! -z "$WP_VERSION" ]] ; then
-      phpunit
-      WP_MULTISITE=1 phpunit
-    fi
-  - |
-    if [[ "$WP_TRAVISCI" == "phpcs" ]] ; then
-      phpcs
-    fi
+  - phpunit
+after_success:
+  - sed -i -e "s/nightly/${TRAVIS_TAG}/" _social.php
+  - curl https://raw.githubusercontent.com/miya0001/auto-build/master/auto-build.sh | bash
+deploy:
+  provider: releases
+  api_key:
+    secure: ZzrwplpSum/Va6iS8imgcKYtgRkt2cPI1u2ULNGVODcAb1sWkrP+x2f/98ZCzkY6/EBwaFuqS26TCI0He+rHB5gYUfNHIJH8CcP6OzIaIm0MNGCr47cujWzWnyyJrOC3OQxxYRR1aTUpOtv6tdgJoJ91VhikJBXBEZEOyTJVPNEOOfs2y3LPEcL4hD7Sq0vrTFprJyNXMFeumKswaMCS9/KJU1+fFUs94cXcqqwI8/rOSHHCzdqvqrqkjqrgPGXF0T0uXM7C96Hio5vEEr8o0F2I2CPOiSdkz49IrOsCXwbqzrLH7GZC5WBLBUwwKKXpw45R9ywx3lsy7zqcsFyw2T+Oy9f8APS/spjNyFzXsmRFgIotyl2rsBq0Qbrd9wT3wPBHRgGGhBybfbkBfT7Bl92wZbLuLsgh5HfvTfkL0pPO5h63x31ZkbFzvtPlN7v7JKaSytOCC3UB67k2/+DuLszOt/L3y8aZ8Bx67plEynkjZCowbMfHK7wnwhTajjsH8mdpP4EdIgEKpNC754MCRpGacHdLqENLOrdcZ9jb62cNkWfTHfV9A8ChJ36WfNL2eiK24JV7lGClmKWkvarXAnDXXMeT2yI1E+WkcUyFW0dN6TdRqIhtERgtg/u1gIO9+YhLU+I29aiFPJamRXAjPQt6t9zx5Gr8PNAeiU449ZY=
+  file: '_social.zip'
+  on:
+    tags: true
+    repo: miya0001/_social

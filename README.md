@@ -1,5 +1,7 @@
 # _Social
 
+[![Build Status](https://travis-ci.org/miya0001/_social.svg?branch=master)](https://travis-ci.org/miya0001/_social)
+
 A WordPress plugin to share the contents.
 
 ```
