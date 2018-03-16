@@ -94,7 +94,8 @@ class OGP
 	private function get_the_og_image_url()
 	{
 		if ( has_post_thumbnail() ) {
-			return get_the_post_thumbnail_url( $this->post, 'large' );
+			$size = $card_type = apply_filters( '_social_image_size', 'large' );
+			return get_the_post_thumbnail_url( $this->post, $size );
 		}
 
 		return false;

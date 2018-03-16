@@ -33,7 +33,8 @@ class Twitter
 			$post = get_post( get_the_ID() );
 			echo $this->twitter_tag( 'twitter:text:title', esc_attr( get_the_title() ) );
 			echo $this->twitter_tag( 'twitter:image', $this->get_the_image() );
-			echo $this->twitter_tag( 'twitter:card', 'summary_large_image' );
+			$card_type = apply_filters( '_social_twitter_card', 'summary' );
+			echo $this->twitter_tag( 'twitter:card', $card_type );
 		}
 
 		echo "<!-- End _Social Twitter Tags -->\n";
@@ -60,7 +61,8 @@ class Twitter
 	private function get_the_image()
 	{
 		if ( has_post_thumbnail() ) {
-			return get_the_post_thumbnail_url( $this->post, 'large' );
+			$size = $card_type = apply_filters( '_social_image_size', 'large' );
+			return get_the_post_thumbnail_url( $this->post, $size );
 		}
 
 		return false;
