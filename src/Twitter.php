@@ -30,10 +30,10 @@ class Twitter
 		echo "<!-- _Social Twitter Tags -->\n";
 
 		if ( is_singular() ) {
-			$post = get_post( get_the_ID() );
-			echo $this->twitter_tag( 'twitter:text:title', esc_attr( get_the_title() ) );
+			echo $this->twitter_tag( 'twitter:title', esc_attr( get_the_title() ) );
+			echo $this->twitter_tag( 'twitter:description', $this->get_the_description() );
 			echo $this->twitter_tag( 'twitter:image', $this->get_the_image() );
-			$card_type = apply_filters( '_social_twitter_card', 'summary' );
+			$card_type = apply_filters( '_social_twitter_card', 'summary_large_image' );
 			echo $this->twitter_tag( 'twitter:card', $card_type );
 		}
 
@@ -53,6 +53,27 @@ class Twitter
 		}
 
 		return "";
+	}
+
+	/**
+	 * @return string The description of the post.
+	 */
+	private function get_the_description()
+	{
+		if ( ! post_password_required() ) {
+			$post = $this->post;
+			if ( ! empty( $post->post_excerpt ) ) {
+				$content = preg_replace( '@https?://[\S]+@', '',
+					strip_shortcodes( wp_kses( $post->post_excerpt, array() ) ) );
+			} else {
+				$exploded_content_on_more_tag = explode( '<!--more-->', $post->post_content );
+				$content = wp_trim_words( preg_replace( '@https?://[\S]+@', '',
+					strip_shortcodes( wp_kses( $exploded_content_on_more_tag[0], array() ) ) ) );
+			}
+			return $content;
+		}
+
+		return '';
 	}
 
 	/**
