@@ -7,9 +7,23 @@
  * Author URI:      https://miya.io/
  * Text Domain:     _social
  * Domain Path:     /languages
- * Version:         0.1.0
+ * Version:         nightly
  *
  * @package         _social
  */
 
-// Your code starts here.
+// Autoload
+require_once( dirname( __FILE__ ) . '/vendor/autoload.php' );
+
+add_action( 'init', function() {
+	$plugin_slug = plugin_basename( __FILE__ );
+	$gh_user = 'miya0001';
+	$gh_repo = '_social';
+
+	new \Miya\WP\GH_Auto_Updater( $plugin_slug, $gh_user, $gh_repo );
+} );
+
+add_action( 'wp_head', function() {
+	_Social\OGP::get_instance()->display();
+	_Social\Twitter::get_instance()->display();
+} );

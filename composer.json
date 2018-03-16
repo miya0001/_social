@@ -1,0 +1,10 @@
+{
+  "autoload": {
+    "psr-4": {
+      "_Social\\": "src/"
+    }
+  },
+  "require": {
+    "miya/gh-auto-updater": "^1.0"
+  }
+}
