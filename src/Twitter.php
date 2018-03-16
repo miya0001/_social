@@ -4,8 +4,16 @@ namespace _Social;
 
 class Twitter
 {
+	/**
+	 * @var $post \WP_Post
+	 */
+	private $post;
+
 	public function __construct()
 	{
+		if ( is_singular() ) {
+			$this->post = get_post( get_the_ID() );
+		}
 	}
 
 	public static function get_instance()
@@ -52,7 +60,7 @@ class Twitter
 	private function get_the_image()
 	{
 		if ( has_post_thumbnail() ) {
-			return get_the_post_thumbnail_url();
+			return get_the_post_thumbnail_url( $this->post, 'large' );
 		}
 
 		return false;

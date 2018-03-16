@@ -94,7 +94,7 @@ class OGP
 	private function get_the_og_image_url()
 	{
 		if ( has_post_thumbnail() ) {
-			return get_the_post_thumbnail_url( $this->post, 'full' );
+			return get_the_post_thumbnail_url( $this->post, 'large' );
 		}
 
 		return false;
