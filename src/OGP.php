@@ -35,7 +35,7 @@ class OGP
 			if ( ! post_password_required() ) {
 				if ( ! empty( $post->post_excerpt ) ) {
 					$content = preg_replace( '@https?://[\S]+@', '',
-								strip_shortcodes( wp_kses( $data->post_excerpt, array() ) ) );
+								strip_shortcodes( wp_kses( $post->post_excerpt, array() ) ) );
 				} else {
 					$exploded_content_on_more_tag = explode( '<!--more-->', $post->post_content );
 					$content = wp_trim_words( preg_replace( '@https?://[\S]+@', '',
