@@ -45,7 +45,7 @@ class OGP
 					date( 'c', strtotime( $post->post_date_gmt ) ) );
 			echo $this->og_tag( 'article:modified_time',
 					date( 'c', strtotime( $post->post_modified_gmt ) ) );
-			echo $this->og_tag( 'og:image', $this->get_the_og_image() );
+			echo $this->og_tag( 'og:image', esc_url( $this->get_the_og_image_url() ) );
 		}
 
 		echo "<!-- End _Social Open Graph Tags -->\n";
@@ -91,10 +91,10 @@ class OGP
 	/**
 	 * @return false|string The URL of the post thumbnail.
 	 */
-	private function get_the_og_image()
+	private function get_the_og_image_url()
 	{
 		if ( has_post_thumbnail() ) {
-			return get_the_post_thumbnail_url();
+			return get_the_post_thumbnail_url( $this->post, 'full' );
 		}
 
 		return false;
