@@ -19,8 +19,8 @@ class SampleTest extends WP_UnitTestCase
 
 		$this->go_to( get_permalink( $post->ID ) );
 
-		$ogp = _Social\OGP::get_instance();
-		$method = new ReflectionMethod( get_class( $ogp ), 'get_the_og_description' );
+		$ogp = _Social\Share\OGP::get_instance();
+		$method = new ReflectionMethod( get_class( $ogp ), 'get_the_description' );
 		$method->setAccessible( true );
 		$res = $method->invoke( $ogp );
 		$this->assertSame( "Hi! Are you happy?", $res );
@@ -36,8 +36,8 @@ class SampleTest extends WP_UnitTestCase
 
 		$this->go_to( get_permalink( $post->ID ) );
 
-		$ogp = _Social\OGP::get_instance();
-		$method = new ReflectionMethod( get_class( $ogp ), 'get_the_og_description' );
+		$ogp = _Social\Share\OGP::get_instance();
+		$method = new ReflectionMethod( get_class( $ogp ), 'get_the_description' );
 		$method->setAccessible( true );
 		$res = $method->invoke( $ogp );
 		$this->assertSame( "Hi! Are you happy?", $res );
