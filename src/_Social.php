@@ -65,14 +65,33 @@ class _Social
 				border: none;
 			}
 
+			._share a
+			{
+				background-color: #555555;
+				border-radius: 30px;
+				width: 30px;
+				height: 30px;
+				line-height: 30px;
+				padding: 0;
+				box-sizing: border-box;
+				display: inline-block;
+				margin-right: 4px;
+				position: relative;
+			}
+
 			._share .dashicons,
 			._share .dashicons-before::before
 			{
-				font-size: 30px;
-				line-height: 30px;
-				height: 30px;
-				margin-right: 16px;
-				color: #555555;
+				display: block;
+				color: #ffffff;
+				position: absolute;
+				font-size: 20px;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				margin: auto;
+				padding: 0;
 			}
 		</style>
 		<?php
@@ -85,7 +104,7 @@ class _Social
 
 		$button = '<div class="_share"><p>';
 		$button .= '<a href="https://twitter.com/share?text=' . $title . '" rel="nofollow" onClick="window.open(encodeURI(decodeURI(this.href)),\'twwindow\',\'width=550, height=450, personalbar=0, toolbar=0, scrollbars=1\'); return false;"><span class="dashicons dashicons-twitter"></span></a>';
-		$button .= '<a href="http://www.facebook.com/share.php?u=' . $url . '" onclick="window.open(this.href,\'FBwindow\',\'width=650,height=450,menubar=no,toolbar=no,scrollbars=yes\');return false;" rel="nofollow"><span class="dashicons dashicons-facebook"></span></a>';
+		$button .= '<a href="http://www.facebook.com/share.php?u=' . $url . '" onclick="window.open(this.href,\'FBwindow\',\'width=650,height=450,menubar=no,toolbar=no,scrollbars=yes\');return false;" rel="nofollow"><span class="dashicons dashicons-facebook-alt"></span></a>';
 		$button .= '</p></div>';
 
 		return $content . $button;
