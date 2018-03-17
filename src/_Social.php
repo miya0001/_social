@@ -47,6 +47,11 @@ class _Social
 	{
 		_Social\Share\OGP::get_instance()->display();
 		_Social\Share\Twitter::get_instance()->display();
+
+		if ( ! is_singular() ) {
+			return;
+		}
+
 		?>
 		<style>
 			._share
@@ -67,7 +72,7 @@ class _Social
 
 			._share a
 			{
-				background-color: #555555;
+				background-color: #aaaaaa;
 				border-radius: 30px;
 				width: 30px;
 				height: 30px;
@@ -77,6 +82,11 @@ class _Social
 				display: inline-block;
 				margin-right: 4px;
 				position: relative;
+			}
+
+			._share a:hover
+			{
+				background-color: #999999;
 			}
 
 			._share .dashicons,
@@ -99,6 +109,10 @@ class _Social
 
 	public function the_content( $content )
 	{
+		if ( ! is_singular() ) {
+			return $content;
+		}
+
 		$url = urlencode( get_permalink() );
 		$title = urlencode( get_the_title() );
 
