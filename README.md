@@ -12,7 +12,7 @@ A WordPress plugin to share the contents.
 
 ### Admin Panel
 
-![](https://www.evernote.com/l/ABWjNY9QgTFGvJ6zzsfpyywemdC0i4I3udYB/image.png)
+![](https://www.evernote.com/l/ABUc1wKlJGZEWo8ozp7uxQCYRJfWXzSyVlIB/image.png)
 
 ## Meta Tags
 

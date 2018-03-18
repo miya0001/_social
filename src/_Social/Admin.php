@@ -146,7 +146,7 @@ final class Admin
 		$action = untrailingslashit( admin_url() ) . '/options.php';
 		?>
 		<div class="wrap _social-settings">
-			<h1 class="wp-heading-inline">Customer Chat Settings</h1>
+			<h1 class="wp-heading-inline">Social Share Settings</h1>
 			<form action="<?php echo esc_url( $action ); ?>" method="post">
 				<?php
 				settings_fields($this->prefix . '-settings');
