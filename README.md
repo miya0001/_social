@@ -6,7 +6,11 @@ A WordPress plugin to share the contents.
 
 ## Screenshot
 
+### Social Icon
+
 ![](https://www.evernote.com/l/ABVq0KLhp4tDh6auGMpkHBEYvq3-0Mk_oSQB/image.png)
+
+### Admin Panel
 
 ![](https://www.evernote.com/l/ABWjNY9QgTFGvJ6zzsfpyywemdC0i4I3udYB/image.png)
 
