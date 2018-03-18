@@ -5,6 +5,8 @@ use _Social\Share as Share;
 
 class OGP extends Share
 {
+	const default_type = 'website';
+
 	public static function get_instance()
 	{
 		static $instance;
@@ -24,10 +26,18 @@ class OGP extends Share
 			'og:title' => $this->get_the_title(),
 			'og:description' => $this->get_the_description(),
 			'og:url' => $this->get_the_url(),
-			'og:image' => $this->get_the_image_url(),
 			'fb-app_id' => \_Social::get_instance()->get_option( 'fb-app_id' ),
 			'fb-admins' => \_Social::get_instance()->get_option( 'fb-admins' ),
 		);
+
+		$src = $this->get_the_image();
+		if ( ! empty( $src[0] ) ) {
+			$data['og:image'] = $src[0];
+			if ( ! empty( $src[1] ) && ! empty( $src[2] ) ) {
+				$data['og:image:width'] = $src[1];
+				$data['og:image:height'] = $src[2];
+			}
+		}
 
 		if ( is_singular() ) {
 			$post = get_post( get_the_ID() );
@@ -42,7 +52,7 @@ class OGP extends Share
 	private function get_the_og_type()
 	{
 		if ( is_home() && is_front_page() ) {
-			return 'website';
+			return \_Social::get_instance()->get_option( 'fb-type', self::default_type );
 		} elseif ( is_singular() ) {
 			return 'article';
 		}

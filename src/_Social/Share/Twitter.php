@@ -24,10 +24,14 @@ class Twitter extends Share
 		$data = array(
 			'twitter:title' => $this->get_the_title(),
 			'twitter:description' => $this->get_the_description(),
-			'twitter:image' => $this->get_the_image_url(),
 			'twitter:card' => $this->get_the_card(),
 			'twitter:site' => $this->get_the_site(),
 		);
+
+		$src = $this->get_the_image();
+		if ( ! empty( $src[0] ) ) {
+			$data['twitter:image'] = $src[0];
+		}
 
 		return $data;
 	}

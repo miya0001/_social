@@ -95,20 +95,23 @@ abstract class Share
 	}
 
 	/**
-	 * @return false|string The URL of the post thumbnail.
+	 * @return array An array of the width and height of the post thumbnail.
 	 */
-	protected function get_the_image_url()
+	protected function get_the_image()
 	{
 		if ( is_singular() ) {
 			if ( has_post_thumbnail() ) {
+				$id = get_post_thumbnail_id();
 				$size = $card_type = apply_filters( '_social_image_size', 'large' );
-
-				return get_the_post_thumbnail_url( $this->post, $size );
+				return wp_get_attachment_image_src( $id, $size );
 			}
-		} else {
-			return \_Social::get_instance()->get_option( 'default-image', null );
 		}
 
-		return false;
+		return array(
+			\_Social::get_instance()->get_option( 'default-image', null ),
+			false,
+			false,
+			false
+		);
 	}
 }
