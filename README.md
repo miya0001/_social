@@ -4,6 +4,14 @@
 
 A WordPress plugin to share the contents.
 
+## Screenshot
+
+![](https://www.evernote.com/l/ABVq0KLhp4tDh6auGMpkHBEYvq3-0Mk_oSQB/image.png)
+
+![](https://www.evernote.com/l/ABWjNY9QgTFGvJ6zzsfpyywemdC0i4I3udYB/image.png)
+
+## Meta Tags
+
 ```
 <!-- _Social Open Graph Tags -->
 <meta property="og:type" content="article" />

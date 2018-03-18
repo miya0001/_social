@@ -40,71 +40,29 @@ class _Social
 
 	public function wp_enqueue_scripts()
 	{
-		wp_enqueue_style( 'dashicons' );
+		if ( is_singular() ) {
+			if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+				wp_enqueue_style(
+					'_social',
+					plugins_url( 'css/style.css', dirname( __FILE__ ) ),
+					array( 'dashicons' ),
+					filemtime( dirname( dirname( __FILE__ ) ) . '/css/style.css' )
+				);
+			} else {
+				wp_enqueue_style(
+					'_social',
+					plugins_url( 'css/style.min.css', dirname( __FILE__ ) ),
+					array( 'dashicons' ),
+					filemtime( dirname( dirname( __FILE__ ) ) . '/css/style.css' )
+				);
+			}
+		}
 	}
 
 	public function wp_head()
 	{
 		_Social\Share\OGP::get_instance()->display();
 		_Social\Share\Twitter::get_instance()->display();
-
-		if ( ! is_singular() ) {
-			return;
-		}
-
-		?>
-		<style>
-			._share
-			{
-				margin-top: 2em;
-			}
-
-			._share a,
-			._share a:link,
-			._share a:visited,
-			._share a:hover,
-			._share a:active
-			{
-				text-decoration: none;
-				box-shadow: none;
-				border: none;
-			}
-
-			._share a
-			{
-				background-color: #aaaaaa;
-				border-radius: 30px;
-				width: 30px;
-				height: 30px;
-				line-height: 30px;
-				padding: 0;
-				box-sizing: border-box;
-				display: inline-block;
-				margin-right: 4px;
-				position: relative;
-			}
-
-			._share a:hover
-			{
-				background-color: #999999;
-			}
-
-			._share .dashicons,
-			._share .dashicons-before::before
-			{
-				display: block;
-				color: #ffffff;
-				position: absolute;
-				font-size: 20px;
-				top: 0;
-				bottom: 0;
-				left: 0;
-				right: 0;
-				margin: auto;
-				padding: 0;
-			}
-		</style>
-		<?php
 	}
 
 	public function the_content( $content )

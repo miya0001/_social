@@ -31,6 +31,7 @@ script:
   - phpunit
 after_success:
   - sed -i -e "s/nightly/${TRAVIS_TAG}/" _social.php
+  - npm install && npm run build
   - curl https://raw.githubusercontent.com/miya0001/auto-build/master/auto-build.sh | bash
 deploy:
   provider: releases

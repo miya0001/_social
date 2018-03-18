@@ -12,7 +12,6 @@
  * @package         _social
  */
 
-// Autoload
-require_once( dirname( __FILE__ ) . '/vendor/autoload.php' );
 
+require_once( dirname( __FILE__ ) . '/vendor/autoload.php' );
 _Social::get_instance()->register();

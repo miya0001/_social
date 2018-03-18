@@ -1,0 +1,21 @@
+{
+  "name": "social",
+  "version": "1.0.0",
+  "description": "[![Build Status](https://travis-ci.org/miya0001/_social.svg?branch=master)](https://travis-ci.org/miya0001/_social)",
+  "scripts": {
+    "build": "cleancss -o css/style.min.css css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miya0001/_social.git"
+  },
+  "author": "",
+  "license": "GPLv2",
+  "bugs": {
+    "url": "https://github.com/miya0001/_social/issues"
+  },
+  "homepage": "https://github.com/miya0001/_social#readme",
+  "devDependencies": {
+    "clean-css-cli": "^4.1.11"
+  }
+}
