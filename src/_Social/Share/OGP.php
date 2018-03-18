@@ -26,8 +26,8 @@ class OGP extends Share
 			'og:title' => $this->get_the_title(),
 			'og:description' => $this->get_the_description(),
 			'og:url' => $this->get_the_url(),
-			'fb-app_id' => \_Social::get_instance()->get_option( 'fb-app_id' ),
-			'fb-admins' => \_Social::get_instance()->get_option( 'fb-admins' ),
+			'fb:app_id' => \_Social::get_instance()->get_option( 'fb-app_id' ),
+			'fb:admins' => \_Social::get_instance()->get_option( 'fb-admins' ),
 		);
 
 		$src = $this->get_the_image();

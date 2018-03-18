@@ -57,12 +57,29 @@ class SampleTest extends WP_UnitTestCase
 
 		$this->go_to( get_permalink( $post->ID ) );
 		$res = $method->invoke( $obj );
-		$this->assertSame( 10, count( array_keys( $res ) ) );
+		$this->assertSame( array(
+			'og:type',
+			'og:title',
+			'og:description',
+			'og:url',
+			'fb:app_id',
+			'fb:admins',
+			'og:site_name',
+			'article:published_time',
+			'article:modified_time',
+		), array_keys( $res ) );
 		$this->assertSame( 'Hello World', $res['og:title'] );
 
 		$this->go_to( '/' );
 		$res = $method->invoke( $obj );
-		$this->assertSame( 7, count( array_keys( $res ) ) );
+		$this->assertSame( array(
+			'og:type',
+			'og:title',
+			'og:description',
+			'og:url',
+			'fb:app_id',
+			'fb:admins',
+		), array_keys( $res ) );
 		$this->assertSame( 'Test Blog', $res['og:title'] );
 	}
 
