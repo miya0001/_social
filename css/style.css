@@ -9,9 +9,9 @@
 ._share a:hover,
 ._share a:active
 {
-  text-decoration: none;
-  box-shadow: none;
-  border: none;
+  text-decoration: none !important;
+  box-shadow: none !important;
+  border: none !important;
 }
 
 ._share a
@@ -46,7 +46,7 @@
   right: 0;
   margin: auto;
   padding: 0;
-  line-height: 1em;
-  height: 1em;
-  width: 1em;
+  line-height: 1em !important;
+  height: 1em !important;
+  width: 1em !important;
 }
