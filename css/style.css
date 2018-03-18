@@ -1,20 +1,20 @@
-._share
+.underscore-social
 {
   margin-top: 2em;
 }
 
-._share a,
-._share a:link,
-._share a:visited,
-._share a:hover,
-._share a:active
+.underscore-social a,
+.underscore-social a:link,
+.underscore-social a:visited,
+.underscore-social a:hover,
+.underscore-social a:active
 {
   text-decoration: none !important;
   box-shadow: none !important;
   border: none !important;
 }
 
-._share a
+.underscore-social a
 {
   background-color: #aaaaaa;
   border-radius: 30px;
@@ -28,13 +28,13 @@
   position: relative;
 }
 
-._share a:hover
+.underscore-social a:hover
 {
   background-color: #999999;
 }
 
-._share .dashicons,
-._share .dashicons-before::before
+.underscore-social .dashicons,
+.underscore-social .dashicons-before::before
 {
   display: block;
   color: #ffffff;
