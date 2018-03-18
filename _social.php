@@ -14,4 +14,15 @@
 
 
 require_once( dirname( __FILE__ ) . '/vendor/autoload.php' );
+
+add_action( 'init', '_social_activate_updater' );
+
+function _social_activate_updater() {
+	$plugin_slug = plugin_basename( __FILE__ );
+	$gh_user = 'miya0001';
+	$gh_repo = '_social';
+
+	new Miya\WP\GH_Auto_Updater( $plugin_slug, $gh_user, $gh_repo );
+}
+
 _Social::get_instance()->register();

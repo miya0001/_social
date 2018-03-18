@@ -23,19 +23,9 @@ class _Social
 			_Social\Admin::get_instance()->register();
 		}
 
-		add_action( 'init', array( $this, 'init' ) );
 		add_action( 'wp_head', array( $this, 'wp_head' ) );
 		add_filter( 'the_content', array( $this, 'the_content' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'wp_enqueue_scripts' ) );
-	}
-
-	public function init()
-	{
-		$plugin_slug = plugin_basename( __FILE__ );
-		$gh_user = 'miya0001';
-		$gh_repo = '_social';
-
-		new Miya\WP\GH_Auto_Updater( $plugin_slug, $gh_user, $gh_repo );
 	}
 
 	public function wp_enqueue_scripts()
