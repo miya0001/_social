@@ -34,16 +34,30 @@ class _Social
 			if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 				wp_enqueue_style(
 					'_social',
-					plugins_url( 'css/style.css', dirname( __FILE__ ) ),
+					plugins_url( 'src/style.css', dirname( __FILE__ ) ),
 					array( 'dashicons' ),
-					filemtime( dirname( dirname( __FILE__ ) ) . '/css/style.css' )
+					filemtime( dirname( dirname( __FILE__ ) ) . '/src/style.css' )
+				);
+				wp_enqueue_script(
+					'_social',
+					plugins_url( 'src/script.js', dirname( __FILE__ ) ),
+					array(),
+					filemtime( dirname( dirname( __FILE__ ) ) . '/src/script.js' ),
+					true
 				);
 			} else {
 				wp_enqueue_style(
 					'_social',
 					plugins_url( 'css/style.min.css', dirname( __FILE__ ) ),
 					array( 'dashicons' ),
-					filemtime( dirname( dirname( __FILE__ ) ) . '/css/style.css' )
+					filemtime( dirname( dirname( __FILE__ ) ) . '/css/style.min.css' )
+				);
+				wp_enqueue_script(
+					'_social',
+					plugins_url( 'js/script.min.js', dirname( __FILE__ ) ),
+					array(),
+					filemtime( dirname( dirname( __FILE__ ) ) . '/js/script.min.js' ),
+					true
 				);
 			}
 		}
@@ -65,8 +79,8 @@ class _Social
 		$title = urlencode( get_the_title() );
 
 		$button = '<div class="underscore-social"><p>';
-		$button .= '<a href="https://twitter.com/share?text=' . $title . '" rel="nofollow" onClick="window.open(encodeURI(decodeURI(this.href)),\'twwindow\',\'width=550, height=450, personalbar=0, toolbar=0, scrollbars=1\'); return false;"><span class="dashicons dashicons-twitter"></span></a>';
-		$button .= '<a href="http://www.facebook.com/share.php?u=' . $url . '" onclick="window.open(this.href,\'FBwindow\',\'width=650,height=450,menubar=no,toolbar=no,scrollbars=yes\');return false;" rel="nofollow"><span class="dashicons dashicons-facebook-alt"></span></a>';
+		$button .= '<a class="twitter" href="https://twitter.com/share?text=' . $title . '" rel="nofollow"><span class="dashicons dashicons-twitter"></span></a>';
+		$button .= '<a class="facebook" href="http://www.facebook.com/share.php?u=' . $url . '" rel="nofollow"><span class="dashicons dashicons-facebook-alt"></span></a>';
 		$button .= '</p></div>';
 
 		return $content . $button;

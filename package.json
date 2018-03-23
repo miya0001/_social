@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "[![Build Status](https://travis-ci.org/miya0001/_social.svg?branch=master)](https://travis-ci.org/miya0001/_social)",
   "scripts": {
-    "build": "cleancss -o css/style.min.css css/style.css"
+    "build": "gulp"
   },
   "repository": {
     "type": "git",
@@ -16,6 +16,9 @@
   },
   "homepage": "https://github.com/miya0001/_social#readme",
   "devDependencies": {
-    "clean-css-cli": "^4.1.11"
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-uglify": "^3.0.0"
   }
 }
