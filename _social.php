@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:     _social
+ * Plugin Name:     _Social
  * Plugin URI:      https://github.com/miya0001/_social
  * Description:     A WordPress plugin to share the contents
  * Author:          Takayuki Miyauchi
