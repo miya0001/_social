@@ -1,6 +1,6 @@
 .underscore-social
 {
-  margin-top: 2em;
+	margin-top: 2em;
 }
 
 .underscore-social a,
@@ -9,44 +9,45 @@
 .underscore-social a:hover,
 .underscore-social a:active
 {
-  text-decoration: none !important;
-  box-shadow: none !important;
-  border: none !important;
+	text-decoration: none !important;
+	box-shadow: none !important;
+	border: none !important;
 }
 
 .underscore-social a
 {
-  background-color: #aaaaaa;
-  border-radius: 30px;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  padding: 0;
-  box-sizing: border-box;
-  display: inline-block;
-  margin-right: 4px;
-  position: relative;
+	background-color: #aaaaaa !important;
+	color: #ffffff !important;
+	border-radius: 30px;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	padding: 0;
+	box-sizing: border-box;
+	display: inline-block;
+	margin-right: 4px;
+	position: relative;
 }
 
 .underscore-social a:hover
 {
-  background-color: #999999;
+	background-color: #999999 !important;
 }
 
 .underscore-social .dashicons,
 .underscore-social .dashicons-before::before
 {
-  display: block;
-  color: #ffffff;
-  position: absolute;
-  font-size: 20px;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  padding: 0;
-  line-height: 1em !important;
-  height: 1em !important;
-  width: 1em !important;
+	display: block;
+	color: #ffffff;
+	position: absolute;
+	font-size: 20px;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	padding: 0;
+	line-height: 1em !important;
+	height: 1em !important;
+	width: 1em !important;
 }

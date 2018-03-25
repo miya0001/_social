@@ -31,35 +31,13 @@ class _Social
 	public function wp_enqueue_scripts()
 	{
 		if ( is_singular() ) {
-			if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-				wp_enqueue_style(
-					'_social',
-					plugins_url( 'src/style.css', dirname( __FILE__ ) ),
-					array( 'dashicons' ),
-					filemtime( dirname( dirname( __FILE__ ) ) . '/src/style.css' )
-				);
-				wp_enqueue_script(
-					'_social',
-					plugins_url( 'src/script.js', dirname( __FILE__ ) ),
-					array(),
-					filemtime( dirname( dirname( __FILE__ ) ) . '/src/script.js' ),
-					true
-				);
-			} else {
-				wp_enqueue_style(
-					'_social',
-					plugins_url( 'css/style.min.css', dirname( __FILE__ ) ),
-					array( 'dashicons' ),
-					filemtime( dirname( dirname( __FILE__ ) ) . '/css/style.min.css' )
-				);
-				wp_enqueue_script(
-					'_social',
-					plugins_url( 'js/script.min.js', dirname( __FILE__ ) ),
-					array(),
-					filemtime( dirname( dirname( __FILE__ ) ) . '/js/script.min.js' ),
-					true
-				);
-			}
+			wp_enqueue_script(
+				'_social',
+				plugins_url( 'js/script.min.js', dirname( __FILE__ ) ),
+				array(),
+				filemtime( dirname( dirname( __FILE__ ) ) . '/js/script.min.js' ),
+				true
+			);
 		}
 	}
 
