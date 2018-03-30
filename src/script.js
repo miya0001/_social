@@ -4,15 +4,16 @@
 		var me = '/_social/js/script.min.js';
 		var css = '/_social/css/style.min.css';
 
-		var scripts = document.querySelectorAll( 'script' );
-		scripts.forEach( function( item ) {
-			var src = item.getAttribute( 'src' );
-			if ( src ) {
-				if ( 0 < src.indexOf( me ) ) {
-					css = src.replace( me, css );
-				}
-			}
-		} );
+        var scripts = document.querySelectorAll( 'script' );
+        for ( var i = 0; i < scripts.length; i++ ) {
+            var item = scripts[ i ];
+            var src = item.getAttribute( 'src' );
+            if ( src ) {
+                if ( 0 < src.indexOf( me ) ) {
+                    css = src.replace( me, css );
+                }
+            }
+        }
 
 		var link = document.createElement( 'link' );
 		link.setAttribute( 'rel', 'stylesheet' );
