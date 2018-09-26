@@ -51,7 +51,7 @@ final class Admin
 		add_settings_section( 'general-settings', 'General Settings', null, $this->prefix );
 		add_settings_section( 'ogp-settings', 'Facebook Open Graph', null, $this->prefix );
 		add_settings_section( 'twitter-settings', 'Twitter Cards', function() {
-			echo '<p>The setting section for the <a href="https://dev.twitter.com/web/sign-inhttps://dev.twitter.com/cards/overview.html">Twitter Cards</a>.</p>';
+			echo '<p>The setting section for the <a href="https://developer.twitter.com/en/docs/tweets/optimize-with-cards/overview/abouts-cards.html">Twitter Cards</a>.</p>';
 		}, $this->prefix );
 
 		add_settings_field(

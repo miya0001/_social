@@ -57,7 +57,13 @@ class _Social
 		$title = urlencode( get_the_title() );
 
 		$button = '<div class="underscore-social"><p>';
-		$button .= '<a class="twitter" href="https://twitter.com/share?text=' . $title . '" rel="nofollow"><span class="dashicons dashicons-twitter"></span></a>';
+		$twitter_url = sprintf(
+			'https://twitter.com/share?text=%s&url=%s',
+			$title,
+			$url
+		);
+		$button .= '<a class="twitter" href="' . esc_url( $twitter_url )
+		           . '" rel="nofollow"><span class="dashicons dashicons-twitter"></span></a>';
 		$button .= '<a class="facebook" href="http://www.facebook.com/share.php?u=' . $url . '" rel="nofollow"><span class="dashicons dashicons-facebook-alt"></span></a>';
 		$button .= '</p></div>';
 
