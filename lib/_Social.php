@@ -31,6 +31,7 @@ class _Social
 	public function wp_enqueue_scripts()
 	{
 		if ( is_singular() ) {
+			wp_enqueue_style( 'dashicons' );
 			wp_enqueue_script(
 				'_social',
 				plugins_url( 'js/script.min.js', dirname( __FILE__ ) ),
